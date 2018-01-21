@@ -11,7 +11,7 @@ marked.setOptions({
 });
 
 gulp.task('md2json', () => {
-gulp.src('./blog/**/*.md')
+gulp.src('blog/**/*.md')
   .pipe(markdownToJSON(marked))
   .pipe(modifyFile((content, path, file) => {
       const start = '['

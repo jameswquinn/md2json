@@ -1,0 +1,21 @@
+{
+  "name": "james7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-combine-json": "^1.0.2",
+    "gulp-markdown-to-json": "^1.0.3",
+    "gulp-modify-file": "^1.0.0",
+    "gulp-pretty-data": "^0.1.2",
+    "marked": "^0.3.12"
+  }
+}

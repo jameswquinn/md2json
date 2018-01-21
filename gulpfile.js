@@ -6,20 +6,28 @@ const modifyFile = require('gulp-modify-file')
 const marked = require('marked');
 
 marked.setOptions({
-  pedantic: true,
-  smartypants: true
+    pedantic: true,
+    smartypants: true
 });
 
 gulp.task('md2json', () => {
-gulp.src('_posts/**/*.md')
-  .pipe(markdownToJSON(marked))
-  .pipe(modifyFile((content, path, file) => {
-      const start = '['
-      const end = ']'
-      return `${start}${content}${end}`
-  }))
-  //.pipe(gulp.dest('_data'))
-  .pipe(concat_json("_posts.json"))
-  .pipe(prettyData({type: 'prettify'}))
-  .pipe(gulp.dest('_data'))
+    gulp.src('_posts/**/*.md')
+        .pipe(markdownToJSON(marked))
+        .pipe(gulp.dest('_data'))
+        .pipe(modifyFile((content, path, file) => {
+            const start = '['
+            const end = ']'
+            return `${start}${content}${end}`
+        }))
+        .pipe(concat_json("_posts.json"))
+
+    .pipe(modifyFile((content, path, file) => {
+            const start = '{ "posts":'
+            const end = '}'
+            return `${start}${content}${end}`
+        }))
+        .pipe(prettyData({
+            type: 'prettify'
+        }))
+        .pipe(gulp.dest('_data'))
 });

@@ -18,7 +18,7 @@ gulp.src('./blog/**/*.md')
       const end = ']'
       return `${start}${content}${end}`
   }))
-  .pipe(concat_json("project.json"))
+  .pipe(concat_json("posts.json"))
   .pipe(prettyData({type: 'prettify'}))
-  .pipe(gulp.dest('tmp'))
+  .pipe(gulp.dest('_data'))
 });

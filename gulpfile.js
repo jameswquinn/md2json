@@ -19,7 +19,7 @@ gulp.src('_posts/**/*.md')
       return `${start}${content}${end}`
   }))
   //.pipe(gulp.dest('_data'))
-  .pipe(concat_json("posts.json"))
+  .pipe(concat_json("_posts.json"))
   .pipe(prettyData({type: 'prettify'}))
   .pipe(gulp.dest('_data'))
 });

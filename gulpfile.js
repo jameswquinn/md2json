@@ -10,6 +10,11 @@ marked.setOptions({
     smartypants: true
 });
 
+//const util = require('gulp-util');
+//const config = {production: !!util.env.production};
+//.pipe(config.production ? minifyCSS() : util.noop())
+//.pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
+
 gulp.task('md2json', () => {
     gulp.src('_posts/**/*.md')
         .pipe(markdownToJSON(marked))

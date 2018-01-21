@@ -11,13 +11,14 @@ marked.setOptions({
 });
 
 gulp.task('md2json', () => {
-gulp.src('blog/**/*.md')
+gulp.src('_posts/**/*.md')
   .pipe(markdownToJSON(marked))
   .pipe(modifyFile((content, path, file) => {
       const start = '['
       const end = ']'
       return `${start}${content}${end}`
   }))
+  //.pipe(gulp.dest('_data'))
   .pipe(concat_json("posts.json"))
   .pipe(prettyData({type: 'prettify'}))
   .pipe(gulp.dest('_data'))

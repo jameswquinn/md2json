@@ -66,11 +66,13 @@ gulp.task('md2json', () => {
             return `${start}${content}${end}`
         }))
         .pipe(concat_json("_posts.json"))
+        /*
         .pipe(modifyFile((content, path, file) => {
             const start = '{ "posts":'
             const end = '}'
             return `${start}${content}${end}`
         }))
+        */
         .pipe(prettyData({
             type: 'prettify'
         }))

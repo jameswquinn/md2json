@@ -31,6 +31,7 @@ const markdownToJSON = require('gulp-markdown-to-json')
 const concat_json = require("gulp-combine-json")
 const prettyData = require('gulp-pretty-data')
 const modifyFile = require('gulp-modify-file')
+const rename = require('gulp-rename')
 const util = require('gulp-util')
 const marked = require('marked')
 
@@ -53,6 +54,7 @@ marked.setOptions({
 
 gulp.task('md2json', () => {
     gulp.src('_posts/**/**/**/*.md')
+        .pipe(rename({extname: '.html'}))
         .pipe(markdownToJSON(marked, 'blog.json', (data, file) => {
             data.path = file.relative;
             return data;
